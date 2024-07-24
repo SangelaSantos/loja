@@ -4,17 +4,20 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { LoginButton, StyledInput } from "./Style";
 import NavLogin from "../components/HeaderLogin";
 import RegisterImg from "../img/1.png";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
-
+  const navigate = useNavigate();
+  
   const handleRegister = (event) => {
     event.preventDefault();
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         console.log("Usuário registrado:", userCredential.user);
+        navigate('/home');
       })
       .catch((error) => {
         setError(error.message);
@@ -33,7 +36,7 @@ function Register() {
         }}
       >
         <div style={{ justifyContent: "space-between" }}>
-          <h2 style={{width: "400px"}}>Cadastre-se para ter acesso completo a sua conta!</h2>
+        <h2 style={{width: "400px"}}>Cadastre-se para ter acesso completo a sua conta!</h2>         
           {error && <p style={{ color: "red" }}>{error}</p>}
           <form onSubmit={handleRegister}>
             <div>

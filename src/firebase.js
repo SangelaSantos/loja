@@ -1,8 +1,9 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getDatabase } from "firebase/database";
+import { getStorage } from "firebase/storage";
+import { getFirestore } from 'firebase/firestore';
 
-// As configurações do Firebase do seu projeto
 const firebaseConfig = {
     apiKey: "AIzaSyCPwDH2RPy7c5dT9mXPTNV3nKx6DIBXBYU",
     authDomain: "mini-loja-86b85.firebaseapp.com",
@@ -19,5 +20,7 @@ const app = initializeApp(firebaseConfig);
 // Inicializar o Firebase Authentication e Database
 const auth = getAuth(app);
 const database = getDatabase(app);
+const storage = getStorage(app);
+const db = getFirestore(app);
 
-export { app, auth, database };
+export { app, auth, database, storage, db };

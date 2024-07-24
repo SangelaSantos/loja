@@ -6,17 +6,20 @@ import Logo from "../img/login-screen.png";
 import { LoginButton, StyledInput } from "./Style";
 import NavLogin from "../components/HeaderLogin";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   const handleLogin = (event) => {
     event.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         console.log("Usuário logado:", userCredential.user);
+        navigate('/home');
       })
       .catch((error) => {
         setError(error.message);
