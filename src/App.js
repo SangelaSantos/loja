@@ -2,8 +2,8 @@ import React from 'react';
 import Login from './pages/Login'
 import Register from './pages/Register'
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import ProductList from './ProductList';
 import HomePage from './pages/HomePage';
+import Cart from './components/cart';
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />}></Route>
           <Route path="/register" element={<Register />}></Route>
-          <Route path="/cart" element={<ProductList />}></Route>
+          <Route path="/cart" element={<Cart />}></Route>
           <Route path="/home" element={<HomePage />}></Route>
         </Routes>
       </BrowserRouter>
