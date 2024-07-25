@@ -12,6 +12,7 @@ import MascList from "../components/masculino";
 import styled from "styled-components";
 import Cart from "../components/cart";
 import Profile from "../components/profile";
+import InfantilList from "../components/infantil";
 
 const Div = styled.div`
   position: fixed;
@@ -88,7 +89,7 @@ const HomePage = () => {
       {value === 1 ? (
         <HomeInside />
       ) : value === 2 ? (
-        <HomeInside/>
+        <InfantilList/>
       ) : value === 3 ? (
         <FemList />
       ) : value === 4 ? (

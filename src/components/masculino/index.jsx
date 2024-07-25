@@ -46,9 +46,9 @@ const MascList = () => {
       {products.length === 0 ? (
         <p>No male products available.</p>
       ) : (
-        <ul>
+        <ul style={{display: "flex", listStyleType: 'none'}}>
           {products.map((product) => (
-            <li key={product.id} style={{ marginBottom: '1em' }}>
+            <li key={product.id} style={{ marginBottom: '1em', margin: "0 20px 20px 20px" }}>
               {product.imageUrl && (
                 <img
                   src={product.imageUrl}
@@ -57,9 +57,8 @@ const MascList = () => {
                 />
               )}
               <div>
-                <strong>Name:</strong> {product.name}<br />
-                <strong>Price:</strong> ${product.price}<br />
-                <strong>Category:</strong> {product.category}<br />
+                <strong>Item: </strong>{product.name}<br />
+                <strong>Valor: </strong> ${product.price}<br />
                 <button onClick={() => handleAddToCart(product)}>Add to Cart</button>
               </div>
             </li>

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { database, ref, onValue } from '../../firebase';
+import { DivList, ButtonAdd } from './style';
+import { addToCart } from '../../cartUtils';
 
 const HomeInside = () => {
   const [products, setProducts] = useState([]);
@@ -29,7 +31,10 @@ const HomeInside = () => {
 
     fetchProducts();
   }, []);
-
+  const handleAddToCart = (product) => {
+    addToCart(product);
+    alert(`${product.name} foi adicionado ao carrinho!`);
+  };
   return (
     <div style={{ marginLeft: "140px"}}>
       <h2>Product List</h2>
@@ -37,21 +42,23 @@ const HomeInside = () => {
       {products.length === 0 ? (
         <p>No products available.</p>
       ) : (
-        <ul>
+        <ul style={{display: "flex", listStyleType: 'none', flexWrap: "wrap"}}>
           {products.map((product) => (
-            <li key={product.id} style={{ marginBottom: '1em' }}>
-              {product.imageUrl && (
-                <img
-                  src={product.imageUrl}
-                  alt={product.name}
-                  style={{ width: '100px', height: '100px', objectFit: 'cover', marginRight: '1em' }}
-                />
-              )}
-              <div>
-                <strong>Name:</strong> {product.name}<br />
-                <strong>Price:</strong> ${product.price}<br />
-                <strong>Category:</strong> {product.category}
-              </div>
+            <li key={product.id} style={{ marginBottom: '1em', margin: "0 20px 20px 20px" }}>
+              <DivList>
+                {product.imageUrl && (
+                  <img
+                    src={product.imageUrl}
+                    alt={product.name}
+                    style={{ width: '100px', height: '100px', objectFit: 'cover', marginRight: '1em' }}
+                  />
+                )}
+                <div>
+                  <strong>Item: </strong>{product.name}<br />
+                  <strong>Valor: </strong> ${product.price}<br />
+                  <ButtonAdd onClick={() => handleAddToCart(product)}>ADICIONAR</ButtonAdd>
+                </div>
+              </DivList>
             </li>
           ))}
         </ul>

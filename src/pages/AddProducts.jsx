@@ -84,6 +84,7 @@ const AddProduct = () => {
         >
           <option value="feminino">Feminino</option>
           <option value="masculino">Masculino</option>
+          <option value="infantil">Infantil</option>
         </select>
       </div>
       <div>

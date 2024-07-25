@@ -1,9 +1,9 @@
-// src/components/FemList.jsx
+// src/components/MascList.jsx
 import React, { useEffect, useState } from 'react';
 import { database, ref, onValue } from '../../firebase';
 import { addToCart } from '../../cartUtils';
 
-const FemList = () => {
+const InfantilList = () => {
   const [products, setProducts] = useState([]);
   const [error, setError] = useState('');
 
@@ -16,7 +16,7 @@ const FemList = () => {
           const productsList = [];
           for (let category in data) {
             for (let id in data[category]) {
-              if (category === 'feminino') {
+              if (category === 'infantil') {
                 productsList.push({ id, ...data[category][id], category });
               }
             }
@@ -41,10 +41,10 @@ const FemList = () => {
 
   return (
     <div style={{ marginLeft: "140px"}}>
-      <h3>Feminino</h3>
+      <h3>Infantil</h3>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       {products.length === 0 ? (
-        <p>No female products available.</p>
+        <p>No male products available.</p>
       ) : (
         <ul style={{display: "flex", listStyleType: 'none'}}>
           {products.map((product) => (
@@ -58,7 +58,7 @@ const FemList = () => {
               )}
               <div>
                 <strong>Item: </strong>{product.name}<br />
-                <strong>Valor: </strong> R$ {product.price}<br />
+                <strong>Valor: </strong> ${product.price}<br />
                 <button onClick={() => handleAddToCart(product)}>Add to Cart</button>
               </div>
             </li>
@@ -69,4 +69,4 @@ const FemList = () => {
   );
 };
 
-export default FemList;
+export default InfantilList;

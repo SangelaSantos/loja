@@ -60,7 +60,7 @@ function Login() {
                   required
                 />
               </div>
-              <LoginButton type="submit">Login</LoginButton>
+              <LoginButton type="submit">ENTRAR</LoginButton>
               <div>
                 <p
                   style={{

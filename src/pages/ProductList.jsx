@@ -37,9 +37,9 @@ const ProductList = () => {
       {products.length === 0 ? (
         <p>No products available.</p>
       ) : (
-        <ul>
+        <ul style={{display: "flex", listStyleType: 'none'}}>
           {products.map((product) => (
-            <li key={product.id} style={{ marginBottom: '1em' }}>
+            <li key={product.id} style={{ marginBottom: '1em', margin: "0 20px 20px 20px" }}>
               {product.imageUrl && (
                 <img
                   src={product.imageUrl}
@@ -48,9 +48,8 @@ const ProductList = () => {
                 />
               )}
               <div>
-                <strong>Name:</strong> {product.name}<br />
-                <strong>Price:</strong> ${product.price}<br />
-                <strong>Category:</strong> {product.category}
+                {product.name}<br />
+                <strong>Valor:</strong> ${product.price}<br />
               </div>
             </li>
           ))}

@@ -1,7 +1,7 @@
 // src/components/Cart.jsx
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { DivFooter, FooterButton } from './style';
+import { ButtonAdd, DivFooter, DivList, FooterButton } from './style';
 const Cart = () => {
   const [cart, setCart] = useState([]);
   const navigate = useNavigate();
@@ -29,30 +29,31 @@ const Cart = () => {
     <div style={{ marginLeft: "140px" }}>
       <h3>Shopping Cart</h3>
       {cart.length === 0 ? (
-        <p>Your cart is empty.</p>
+        <p>Seu carrinho está vazio.</p>
       ) : (
         <div>
-          <ul>
+          <ul style={{display: 'flex', listStyleType: 'none', flexWrap: "wrap"}}>
             {cart.map((product) => (
-              <li key={product.id} style={{ marginBottom: '1em' }}>
-                {product.imageUrl && (
-                  <img
-                    src={product.imageUrl}
-                    alt={product.name}
-                    style={{ width: '100px', height: '100px', objectFit: 'cover', marginRight: '1em' }}
-                  />
-                )}
-                <div>
-                  <strong>Name:</strong> {product.name}<br />
-                  <strong>Price:</strong> ${product.price}<br />
-                  <strong>Category:</strong> {product.category}<br />
-                  <button onClick={() => handleRemoveFromCart(product.id)}>Remove</button>
-                </div>
+              <li key={product.id} style={{ marginBottom: '1em', margin: "0 20px 20px 20px" }}>
+                <DivList>
+                  {product.imageUrl && (
+                    <img
+                      src={product.imageUrl}
+                      alt={product.name}
+                      style={{ width: '100px', height: '100px', objectFit: 'cover', marginRight: '1em' }}
+                    />
+                  )}
+                  <div>
+                    <strong>Item: </strong>{product.name}<br />
+                    <strong>Valor: </strong> ${product.price}<br />
+                    <ButtonAdd onClick={() => handleRemoveFromCart(product.id)}>Remove</ButtonAdd>
+                  </div>
+                </DivList>
               </li>
             ))}
           </ul>
           <DivFooter>
-            <strong>Total Price:</strong> ${calculateTotal()}<br />
+            <strong>Total Price:</strong> R$ {calculateTotal()}<br />
             <FooterButton onClick={handlePayment}>Pagar</FooterButton>
           </DivFooter>
           
