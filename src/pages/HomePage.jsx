@@ -10,6 +10,7 @@ import HomeInside from "../components/homeInside";
 import FemList from "../components/feminino";
 import MascList from "../components/masculino";
 import styled from "styled-components";
+import Cart from "../components/cart";
 
 const Div = styled.div`
   position: fixed;
@@ -86,6 +87,8 @@ const HomePage = () => {
         <FemList />
       ) : value === 4 ? (
         <MascList />
+      ) : value === 5 ? (
+        <Cart />
       ) : null}
     </>
   );

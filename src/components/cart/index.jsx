@@ -1,38 +1,48 @@
+// src/components/Cart.jsx
 import React, { useEffect, useState } from 'react';
-import { db } from '../../firebase';
-import { collection, query, where, getDocs } from 'firebase/firestore';
-import { getAuth } from 'firebase/auth';
 
-function Cart() {
-  const [products, setProducts] = useState([]);
+const Cart = () => {
+  const [cart, setCart] = useState([]);
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      const user = getAuth().currentUser;
-
-      if (user) {
-        const q = query(collection(db, 'products'), where('userId', '==', user.uid));
-        const querySnapshot = await getDocs(q);
-        const userProducts = querySnapshot.docs.map(doc => ({ ...doc.data(), id: doc.id }));
-        setProducts(userProducts);
-      }
-    };
-
-    fetchProducts();
+    const savedCart = JSON.parse(localStorage.getItem('cart')) || [];
+    setCart(savedCart);
   }, []);
 
+  const handleRemoveFromCart = (id) => {
+    const updatedCart = cart.filter(product => product.id !== id);
+    setCart(updatedCart);
+    localStorage.setItem('cart', JSON.stringify(updatedCart));
+  };
+
   return (
-    <div style={{marginTop: "60px"}}>
-      <h2>Seus Produtos</h2>
-      <ul>
-        {products.map(product => (
-          <li key={product.id}>
-            {product.name} - ${product.price}
-          </li>
-        ))}
-      </ul>
+    <div style={{ marginTop: "60px" }}>
+      <h3>Shopping Cart</h3>
+      {cart.length === 0 ? (
+        <p>Your cart is empty.</p>
+      ) : (
+        <ul>
+          {cart.map((product) => (
+            <li key={product.id} style={{ marginBottom: '1em' }}>
+              {product.imageUrl && (
+                <img
+                  src={product.imageUrl}
+                  alt={product.name}
+                  style={{ width: '100px', height: '100px', objectFit: 'cover', marginRight: '1em' }}
+                />
+              )}
+              <div>
+                <strong>Name:</strong> {product.name}<br />
+                <strong>Price:</strong> ${product.price}<br />
+                <strong>Category:</strong> {product.category}<br />
+                <button onClick={() => handleRemoveFromCart(product.id)}>Remove</button>
+              </div>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
-}
+};
 
 export default Cart;
