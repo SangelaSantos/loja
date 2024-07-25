@@ -4,9 +4,11 @@ import { FaShoppingCart } from "react-icons/fa";
 import { MdHome } from "react-icons/md";
 import { TbCategoryPlus } from "react-icons/tb";
 import { FaUser } from "react-icons/fa";
+import { GiAmpleDress } from "react-icons/gi";
+import { PiPantsFill } from "react-icons/pi";
 import HomeInside from "../components/homeInside";
-import Category from "../components/category";
-import Cart from "../components/cart";
+import FemList from "../components/feminino";
+import MascList from "../components/masculino";
 import styled from "styled-components";
 
 const Div = styled.div`
@@ -50,11 +52,25 @@ const HomePage = () => {
               checked={value === 3}
               onChange={onChangeRadio2}
             >
-              <FaShoppingCart />
+              <GiAmpleDress />
             </Radio.Button>
             <Radio.Button
               value={4}
               checked={value === 4}
+              onChange={onChangeRadio2}
+            >
+              <PiPantsFill />
+            </Radio.Button>
+            <Radio.Button
+              value={5}
+              checked={value === 5}
+              onChange={onChangeRadio2}
+            >
+              <FaShoppingCart />
+            </Radio.Button>
+            <Radio.Button
+              value={6}
+              checked={value === 6}
               onChange={onChangeRadio2}
             >
               <FaUser />
@@ -65,9 +81,11 @@ const HomePage = () => {
       {value === 1 ? (
         <HomeInside />
       ) : value === 2 ? (
-        <Category />
+        <HomeInside/>
       ) : value === 3 ? (
-        <Cart />
+        <FemList />
+      ) : value === 4 ? (
+        <MascList />
       ) : null}
     </>
   );

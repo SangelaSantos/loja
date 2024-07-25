@@ -1,7 +1,8 @@
+// src/components/MascList.jsx
 import React, { useEffect, useState } from 'react';
-import { database, ref, onValue } from '../firebase';
+import { database, ref, onValue } from '../../firebase';
 
-const ProductList = () => {
+const MascList = () => {
   const [products, setProducts] = useState([]);
   const [error, setError] = useState('');
 
@@ -14,7 +15,9 @@ const ProductList = () => {
           const productsList = [];
           for (let category in data) {
             for (let id in data[category]) {
-              productsList.push({ id, ...data[category][id] });
+              if (category === 'masculino') {
+                productsList.push({ id, ...data[category][id], category });
+              }
             }
           }
           setProducts(productsList);
@@ -32,10 +35,10 @@ const ProductList = () => {
 
   return (
     <div style={{marginTop: "60px"}}>
-      <h2>Product List</h2>
+      <h3>Masculino</h3>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       {products.length === 0 ? (
-        <p>No products available.</p>
+        <p>No male products available.</p>
       ) : (
         <ul>
           {products.map((product) => (
@@ -60,4 +63,4 @@ const ProductList = () => {
   );
 };
 
-export default ProductList;
+export default MascList;
