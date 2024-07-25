@@ -1,8 +1,9 @@
 // src/components/Cart.jsx
 import React, { useEffect, useState } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 const Cart = () => {
   const [cart, setCart] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const savedCart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -17,6 +18,10 @@ const Cart = () => {
 
   const calculateTotal = () => {
     return cart.reduce((total, product) => total + parseFloat(product.price), 0).toFixed(2);
+  };
+
+  const handlePayment = () => {
+    navigate('/qrcode')
   };
 
   return (
@@ -46,8 +51,10 @@ const Cart = () => {
             ))}
           </ul>
           <div style={{ marginTop: '20px' }}>
-            <strong>Total Price:</strong> ${calculateTotal()}
+            <strong>Total Price:</strong> ${calculateTotal()}<br />
+            <button onClick={handlePayment} style={{ marginTop: '10px' }} >Pay</button>
           </div>
+          
         </div>
       )}
     </div>

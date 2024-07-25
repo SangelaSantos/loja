@@ -1,6 +1,7 @@
 // src/components/MascList.jsx
 import React, { useEffect, useState } from 'react';
 import { database, ref, onValue } from '../../firebase';
+import { addToCart } from '../../cartUtils';
 
 const MascList = () => {
   const [products, setProducts] = useState([]);
@@ -33,8 +34,13 @@ const MascList = () => {
     fetchProducts();
   }, []);
 
+  const handleAddToCart = (product) => {
+    addToCart(product);
+    alert(`${product.name} foi adicionado ao carrinho!`);
+  };
+
   return (
-    <div style={{marginTop: "60px"}}>
+    <div style={{ marginTop: "60px" }}>
       <h3>Masculino</h3>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       {products.length === 0 ? (
@@ -53,7 +59,8 @@ const MascList = () => {
               <div>
                 <strong>Name:</strong> {product.name}<br />
                 <strong>Price:</strong> ${product.price}<br />
-                <strong>Category:</strong> {product.category}
+                <strong>Category:</strong> {product.category}<br />
+                <button onClick={() => handleAddToCart(product)}>Add to Cart</button>
               </div>
             </li>
           ))}

@@ -7,6 +7,7 @@ import Cart from "./components/cart";
 import { ConfigProvider } from "antd";
 import AddProduct from "./pages/AddProducts";
 import ProductList from "./pages/ProductList";
+import QRCodePage from "./components/QrCodePage";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/home" element={<HomePage />}></Route>
           <Route path="/add" element={<AddProduct/>}></Route>
           <Route path="/product" element={<ProductList/>}></Route>
+          <Route path="/qrcode" element={<QRCodePage/>}></Route>
         </Routes>
       </BrowserRouter>
     </ConfigProvider>
