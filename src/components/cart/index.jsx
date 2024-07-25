@@ -1,6 +1,7 @@
 // src/components/Cart.jsx
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { DivFooter, FooterButton } from './style';
 const Cart = () => {
   const [cart, setCart] = useState([]);
   const navigate = useNavigate();
@@ -25,7 +26,7 @@ const Cart = () => {
   };
 
   return (
-    <div style={{ marginTop: "60px" }}>
+    <div style={{ marginLeft: "140px" }}>
       <h3>Shopping Cart</h3>
       {cart.length === 0 ? (
         <p>Your cart is empty.</p>
@@ -50,10 +51,10 @@ const Cart = () => {
               </li>
             ))}
           </ul>
-          <div style={{ marginTop: '20px' }}>
+          <DivFooter>
             <strong>Total Price:</strong> ${calculateTotal()}<br />
-            <button onClick={handlePayment} style={{ marginTop: '10px' }} >Pay</button>
-          </div>
+            <FooterButton onClick={handlePayment}>Pagar</FooterButton>
+          </DivFooter>
           
         </div>
       )}

@@ -40,7 +40,7 @@ const MascList = () => {
   };
 
   return (
-    <div style={{ marginTop: "60px" }}>
+    <div style={{ marginLeft: "140px"}}>
       <h3>Masculino</h3>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       {products.length === 0 ? (

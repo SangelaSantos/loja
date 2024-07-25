@@ -31,7 +31,7 @@ const HomeInside = () => {
   }, []);
 
   return (
-    <div style={{marginTop: "60px"}}>
+    <div style={{ marginLeft: "140px"}}>
       <h2>Product List</h2>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       {products.length === 0 ? (

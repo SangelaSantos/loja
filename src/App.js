@@ -2,12 +2,12 @@ import React from "react";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import HomePage from "./pages/HomePage";
 import Cart from "./components/cart";
 import { ConfigProvider } from "antd";
 import AddProduct from "./pages/AddProducts";
 import ProductList from "./pages/ProductList";
 import QRCodePage from "./components/QrCodePage";
+import HomePage from "./pages/HomePage";
 
 function App() {
   return (

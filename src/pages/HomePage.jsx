@@ -11,15 +11,15 @@ import FemList from "../components/feminino";
 import MascList from "../components/masculino";
 import styled from "styled-components";
 import Cart from "../components/cart";
+import Profile from "../components/profile";
 
 const Div = styled.div`
   position: fixed;
   left: 0;
-  top: 0;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  background: rgb(230, 230, 250);
+  bottom: 0;
+  width: 100px;
+  height: 100vh;
+  
 `;
 const HomePage = () => {
   const [value, setValue] = useState(1);
@@ -33,48 +33,54 @@ const HomePage = () => {
     <>
       <Div>
         <Flex vertical gap="middle">
-          <Radio.Group defaultValue="a">
+          <Radio.Group defaultValue="a" >
             <Radio.Button
               value={1}
               checked={value === 1}
               onChange={onChangeRadio2}
+              style={{height: "50px" }}
             >
-              <MdHome />
+              <MdHome style={{ width: "100px", fontSize: "24px", marginTop: "4px" }}/>
             </Radio.Button>
             <Radio.Button
               value={2}
               checked={value === 2}
               onChange={onChangeRadio2}
+              style={{height: "50px"}}
             >
-              <TbCategoryPlus />
+              <TbCategoryPlus style={{ width: "100px", fontSize: "24px", marginTop: "4px" }}/>
             </Radio.Button>
             <Radio.Button
               value={3}
               checked={value === 3}
               onChange={onChangeRadio2}
+              style={{height: "50px"}}
             >
-              <GiAmpleDress />
+              <GiAmpleDress style={{ width: "100px", fontSize: "24px", marginTop: "4px" }}/>
             </Radio.Button>
             <Radio.Button
               value={4}
               checked={value === 4}
               onChange={onChangeRadio2}
+              style={{height: "50px"}}
             >
-              <PiPantsFill />
+              <PiPantsFill style={{ width: "100px", fontSize: "24px", marginTop: "4px" }}/>
             </Radio.Button>
             <Radio.Button
               value={5}
               checked={value === 5}
               onChange={onChangeRadio2}
+              style={{height: "50px"}}
             >
-              <FaShoppingCart />
+              <FaShoppingCart style={{ width: "100px", fontSize: "24px", marginTop: "4px" }}/>
             </Radio.Button>
             <Radio.Button
               value={6}
               checked={value === 6}
               onChange={onChangeRadio2}
+              style={{height: "50px"}}
             >
-              <FaUser />
+              <FaUser style={{ width: "100px", fontSize: "24px", marginTop: "4px" }}/>
             </Radio.Button>
           </Radio.Group>
         </Flex>
@@ -89,6 +95,8 @@ const HomePage = () => {
         <MascList />
       ) : value === 5 ? (
         <Cart />
+      ) : value === 6 ? (
+        <Profile />
       ) : null}
     </>
   );
