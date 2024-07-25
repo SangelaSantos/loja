@@ -22,7 +22,7 @@ function Cart() {
   }, []);
 
   return (
-    <div>
+    <div style={{marginTop: "60px"}}>
       <h2>Seus Produtos</h2>
       <ul>
         {products.map(product => (
