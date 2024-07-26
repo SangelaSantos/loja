@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { database, ref, onValue } from '../../firebase';
-import { DivList, ButtonAdd } from './style';
 import { addToCart } from '../../cartUtils';
+import { ButtonAdd, ButtonQuantity, DivList } from './style';
+import { MdAddShoppingCart } from "react-icons/md";
 
 const HomeInside = () => {
   const [products, setProducts] = useState([]);
   const [error, setError] = useState('');
+  const [quantities, setQuantities] = useState({});
 
   useEffect(() => {
     const fetchProducts = () => {
@@ -31,32 +33,56 @@ const HomeInside = () => {
 
     fetchProducts();
   }, []);
+
   const handleAddToCart = (product) => {
-    addToCart(product);
-    alert(`${product.name} foi adicionado ao carrinho!`);
+    const quantity = quantities[product.id] || 1;
+    addToCart({ ...product, quantity });
+    alert(`${quantity} ${product.name} foi adicionado ao carrinho!`);
   };
+
+  const handleIncreaseQuantity = (productId) => {
+    setQuantities((prevQuantities) => ({
+      ...prevQuantities,
+      [productId]: (prevQuantities[productId] || 1) + 1,
+    }));
+  };
+
+  const handleDecreaseQuantity = (productId) => {
+    setQuantities((prevQuantities) => ({
+      ...prevQuantities,
+      [productId]: Math.max((prevQuantities[productId] || 1) - 1, 1),
+    }));
+  };
+
   return (
     <div style={{ marginLeft: "140px"}}>
-      <h2>Product List</h2>
+      <h3>Seção Feminina</h3>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       {products.length === 0 ? (
-        <p>No products available.</p>
+        <p>Não há produtos femininos disponíveis.</p>
       ) : (
-        <ul style={{display: "flex", listStyleType: 'none', flexWrap: "wrap"}}>
+        <ul style={{display: "flex", flexWrap: "wrap",listStyleType: 'none'}}>
           {products.map((product) => (
             <li key={product.id} style={{ marginBottom: '1em', margin: "0 20px 20px 20px" }}>
               <DivList>
-                {product.imageUrl && (
-                  <img
-                    src={product.imageUrl}
-                    alt={product.name}
-                    style={{ width: '100px', height: '100px', objectFit: 'cover', marginRight: '1em' }}
-                  />
-                )}
+                <div style={{display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  {product.imageUrl && (
+                    <img
+                      src={product.imageUrl}
+                      alt={product.name}
+                      style={{ width: '100px', height: '100px', objectFit: 'cover', marginRight: '1em'}}
+                    />
+                  )}
+                </div>
                 <div>
-                  <strong>Item: </strong>{product.name}<br />
-                  <strong>Valor: </strong> ${product.price}<br />
-                  <ButtonAdd onClick={() => handleAddToCart(product)}>ADICIONAR</ButtonAdd>
+                  <div style={{display: "flex", marginTop: "10px"}}>
+                  <div style={{fontWeight: "bold"}}>{product.name}</div>
+                  <div style={{marginLeft: "10px", color: "red", fontWeight: "bold"}}>R$ {product.price}</div>
+                  </div>
+                      <ButtonQuantity onClick={() => handleDecreaseQuantity(product.id)}>-</ButtonQuantity>
+                      {quantities[product.id] || 1}
+                      <ButtonQuantity onClick={() => handleIncreaseQuantity(product.id)}>+</ButtonQuantity>
+                  <ButtonAdd onClick={() => handleAddToCart(product)}><MdAddShoppingCart style={{fontSize: "20px"}}/></ButtonAdd>
                 </div>
               </DivList>
             </li>
