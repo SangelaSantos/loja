@@ -1,11 +1,18 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const Index = () => {
-    return (
-        <div style={{ marginLeft: "140px"}}>
-            <button>SAIR</button>
-        </div>
-    );
+const Navigate = () => {
+  const navigate = useNavigate();
+
+  const voltarInicio = () => {
+    navigate('/');
+  };
+
+  return (
+    <div style={{ marginLeft: "140px" }}>
+      <button onClick={voltarInicio}>SAIR</button>
+    </div>
+  );
 }
 
-export default Index;
+export default Navigate;
