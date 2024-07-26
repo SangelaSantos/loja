@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { Flex, Radio } from "antd";
 import { FaShoppingCart } from "react-icons/fa";
 import { MdHome } from "react-icons/md";
-import { TbCategoryPlus } from "react-icons/tb";
+import { FaBaby } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
 import { GiAmpleDress } from "react-icons/gi";
+
 import { PiPantsFill } from "react-icons/pi";
 import HomeInside from "../components/homeInside";
 import FemList from "../components/feminino";
@@ -49,7 +50,7 @@ const HomePage = () => {
               onChange={onChangeRadio2}
               style={{height: "50px"}}
             >
-              <TbCategoryPlus style={{ width: "100px", fontSize: "24px", marginTop: "4px" }}/>
+              <FaBaby style={{ width: "100px", fontSize: "24px", marginTop: "4px" }}/>
             </Radio.Button>
             <Radio.Button
               value={3}
