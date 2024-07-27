@@ -12,7 +12,7 @@ function Register() {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
   
-  const handleRegister = (event) => {
+  const metodoCadastro = (event) => {
     event.preventDefault();
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
@@ -20,7 +20,7 @@ function Register() {
         navigate('/home');
       })
       .catch((error) => {
-        setError(error.message);
+        setError('Erro ao se cadastrar');
         console.error("Erro ao registrar usuário:", error);
       });
   };
@@ -38,7 +38,7 @@ function Register() {
         <div style={{ justifyContent: "space-between" }}>
         <h2 style={{width: "400px"}}>Cadastre-se para ter acesso completo a sua conta!</h2>         
           {error && <p style={{ color: "red" }}>{error}</p>}
-          <form onSubmit={handleRegister}>
+          <form onSubmit={metodoCadastro}>
             <div>
               <p style={{ marginBottom: "2px" }}>
                 E-MAIL <span style={{ color: "red" }}>*</span>

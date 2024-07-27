@@ -14,7 +14,7 @@ function Login() {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  const handleLogin = (event) => {
+  const verificacaoLogin = (event) => {
     event.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
@@ -22,7 +22,7 @@ function Login() {
         navigate('/home');
       })
       .catch((error) => {
-        setError(error.message);
+        setError('E-mail ou senha incorretos!');
         console.error("Erro ao logar usuário:", error);
       });
   };
@@ -41,7 +41,7 @@ function Login() {
           >
             <h1 style={{ fontSize: "22px" }}>CONECTE-SE AGORA MESMO!</h1>
             {error && <p style={{ color: "red" }}>{error}</p>}
-            <form onSubmit={handleLogin}>
+            <form onSubmit={verificacaoLogin}>
               <div>
                 <p style={{ marginBottom: "2px" }}>E-MAIL</p>
                 <StyledInput

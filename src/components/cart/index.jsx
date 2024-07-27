@@ -7,9 +7,9 @@ const Cart = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const savedCart = JSON.parse(localStorage.getItem('cart')) || [];
+    const savedCart = JSON.parse(localStorage.getItem('cart')) || []; // Obtém o carrinho salvo no localStorage e o converte de JSON para um array
     setCart(savedCart);
-  }, []);
+  }, []);  // O array vazio [] garante que o useEffect seja executado apenas uma vez, quando o componente for montado
 
   const aumentarQuantidade = (id) => {
     const updatedCart = cart.map(product => {
