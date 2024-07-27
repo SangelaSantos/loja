@@ -13,102 +13,149 @@ import styled from "styled-components";
 import Cart from "../components/cart";
 import Profile from "../components/profile";
 import InfantilList from "../components/infantil";
-
-const DivF = styled.div`
+import LogoTelaHome from "../img/logo.png";
+const SideBar = styled.div`
   position: fixed;
   top: 0;
-  right: 0;
-  width: 100%;
-  height: 60px;
-  box-shadow: 5px 0 10px rgba(39, 39, 39, 0.5);
-  
-`;
-const Div = styled.div`
-  position: fixed;
   left: 0;
-  top: 0;
-  width: 150px;
+  width: 130px;
   height: 100%;
-  box-shadow: 5px 0 10px rgba(39, 39, 39, 0.5);
-  
+  background-color: black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  font-size: 24px;
+  z-index: 1000;
 `;
+
 const HomePage = () => {
   const [value, setValue] = useState(1);
-  const [searchTerm, setSearchTerm] = useState("");
-
-  const handleSearchChange = (e) => {
-    setSearchTerm(e.target.value);
-  };
+  const [hoveredButton, setHoveredButton] = useState(null);
 
   const onChangeRadio2 = (e) => {
     console.log("radio checked", e.target.value);
     setValue(e.target.value);
   };
+  const handleMouseEnter = (buttonValue) => {
+    setHoveredButton(buttonValue);
+  };
 
+  const handleMouseLeave = () => {
+    setHoveredButton(null);
+  };
   return (
     <>
-      <DivF>
-        <input
-                placeholder="Pesquisa 🔍"
-                value={searchTerm}
-                onChange={handleSearchChange}
-                style={{ marginTop: "20px", borderRadius: "10px", width: "130px", marginBottom: "10px", marginLeft: "200px" }}
-              />
-      </DivF>
-      <Div>
+      <SideBar>
+      <img
+            src={LogoTelaHome}
+            alt="login"
+            style={{
+              width: "100px",
+              height: "100px",
+              marginLeft: "10px"
+            }}
+          />
         <Flex vertical gap="middle">
           <Radio.Group defaultValue="a" >
             <Radio.Button
               value={1}
               checked={value === 1}
               onChange={onChangeRadio2}
-              style={{height: "60px" }}
+              onMouseEnter={() => handleMouseEnter(1)}
+              onMouseLeave={handleMouseLeave}
+              style={{
+                height: "50px",
+                border: 0,
+                borderRadius: 0,
+                backgroundColor: value === 1 ? "white" : hoveredButton === 1 ? "grey" : "black",
+                color: value === 1 || hoveredButton === 1 ? "black" : "white"
+              }}
             >
-              <MdHome style={{ width: "118px", fontSize: "24px", marginTop: "4px" }}/>
+              <MdHome style={{ width: "100px", fontSize: "40px", marginTop: "4px", color: value === 1 ? "black" : hoveredButton === 1 ? "black" : "white"}}/>
             </Radio.Button>
             <Radio.Button
               value={2}
               checked={value === 2}
               onChange={onChangeRadio2}
-              style={{height: "60px"}}
+              onMouseEnter={() => handleMouseEnter(2)}
+              onMouseLeave={handleMouseLeave}
+              style={{
+                height: "50px",
+                border: 0,
+                borderRadius: 0,
+                backgroundColor: value === 2 ? "white" : hoveredButton === 2 ? "grey" : "black",
+                color: value === 2 || hoveredButton === 2 ? "black" : "white"
+              }}
             >
-              <FaBaby style={{ width: "118px", fontSize: "24px", marginTop: "4px" }}/>
+              <FaBaby style={{ width: "100px", fontSize: "40px", marginTop: "4px", color: value === 2 ? "black" : hoveredButton === 2 ? "black" : "white"}}/>
             </Radio.Button>
             <Radio.Button
               value={3}
               checked={value === 3}
               onChange={onChangeRadio2}
-              style={{height: "60px"}}
+              onMouseEnter={() => handleMouseEnter(3)}
+              onMouseLeave={handleMouseLeave}
+              style={{
+                height: "50px",
+                border: 0,
+                borderRadius: 0,
+                backgroundColor: value === 3 ? "white" : hoveredButton === 3 ? "grey" : "black",
+                color: value === 3 || hoveredButton === 3 ? "black" : "white"
+              }}
             >
-              <GiAmpleDress style={{ width: "118px", fontSize: "24px", marginTop: "4px" }}/>
+              <GiAmpleDress style={{ width: "100px", fontSize: "40px", marginTop: "4px", color: value === 3 ? "black" : hoveredButton === 3 ? "black" : "white"}}/>
             </Radio.Button>
             <Radio.Button
               value={4}
               checked={value === 4}
               onChange={onChangeRadio2}
-              style={{height: "60px"}}
+              onMouseEnter={() => handleMouseEnter(4)}
+              onMouseLeave={handleMouseLeave}
+              style={{
+                height: "50px",
+                border: 0,
+                borderRadius: 0,
+                backgroundColor: value === 4 ? "white" : hoveredButton === 4 ? "grey" : "black",
+                color: value === 4 || hoveredButton === 4 ? "black" : "white"
+              }}
             >
-              <PiPantsFill style={{ width: "118px", fontSize: "24px", marginTop: "4px" }}/>
+              <PiPantsFill style={{ width: "100px", fontSize: "40px", marginTop: "4px", color: value === 4 ? "black" : hoveredButton === 4 ? "black" : "white"}}/>
             </Radio.Button>
             <Radio.Button
               value={5}
               checked={value === 5}
               onChange={onChangeRadio2}
-              style={{height: "60px"}}
+              onMouseEnter={() => handleMouseEnter(5)}
+              onMouseLeave={handleMouseLeave}
+              style={{
+                height: "50px",
+                border: 0,
+                borderRadius: 0,
+                backgroundColor: value === 5 ? "white" : hoveredButton === 5 ? "grey" : "black",
+                color: value === 5 || hoveredButton === 5 ? "black" : "white"
+              }}
             >
-              <FaShoppingCart style={{ width: "118px", fontSize: "24px", marginTop: "4px" }}/>
+              <FaShoppingCart style={{ width: "100px", fontSize: "40px", marginTop: "4px", color: value === 5 ? "black" : hoveredButton === 5 ? "black" : "white"}}/>
             </Radio.Button>
             <Radio.Button
               value={6}
               checked={value === 6}
               onChange={onChangeRadio2}
-              style={{height: "60px"}}
+              onMouseEnter={() => handleMouseEnter(6)}
+              onMouseLeave={handleMouseLeave}
+              style={{
+                height: "50px",
+                border: 0,
+                borderRadius: 0,
+                backgroundColor: value === 6 ? "white" : hoveredButton === 6 ? "grey" : "black",
+                color: value === 6 || hoveredButton === 6 ? "black" : "white"
+              }}
             >
-              <FaUser style={{ width: "118px", fontSize: "24px", marginTop: "4px" }}/>
+              <FaUser style={{ width: "100px", fontSize: "40px", marginTop: "4px", color: value === 6 ? "black" : hoveredButton === 6 ? "black" : "white"}}/>
             </Radio.Button>
           </Radio.Group>
         </Flex>
-      </Div>
+      </SideBar>
       {value === 1 ? (
         <HomeInside />
       ) : value === 2 ? (

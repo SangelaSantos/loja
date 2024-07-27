@@ -9,7 +9,7 @@ const QRCodePage = () => {
 
   return (
     <div style={{ marginTop: '60px', textAlign: 'center' }}>
-      <h3>Scan this QR code to proceed with payment:</h3>
+      <h3>Leia este código QR para prosseguir com o pagamento e concluir sua compra.</h3>
       <QRCode value={`Payment amount: $${total}`} size={256} />
     </div>
   );

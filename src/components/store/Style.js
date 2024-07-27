@@ -1,5 +1,21 @@
 import styled from 'styled-components';
 
+export const SideBar = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 120px;
+  height: 100%;
+  background-color: #272727;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 24px;
+  z-index: 1000;
+`;
+
 export const MainContent = styled.div`
   margin-left: 120px; /* Adiciona uma margem esquerda para evitar sobreposição com a barra lateral fixa */
 `;
@@ -78,7 +94,7 @@ export const QuantityDisplay = styled.div`
 export const TotalContainer = styled.div`
   position: fixed;
   bottom: 0;
-  left: 120px;
+  left: 120px; /* mesma margem que MainContent */
   width: calc(100% - 120px); /* ajustar para que ocupe todo o espaço à direita da sidebar */
   background-color: #f4f4f4;
   padding: 20px;
@@ -86,14 +102,4 @@ export const TotalContainer = styled.div`
   display: flex;
   justify-content: flex-end;
   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-`;
-export const ButtonPagamento = styled.button`
-  margin-left: 50px;
-  margin-right: 50px;
-  border: 1px solid #272727;
-  border-radius: 5px;
-  padding: 8px 50px;
-  background-color: #272727;
-  color: white;
-  font-weight: bold;
 `;

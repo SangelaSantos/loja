@@ -7,6 +7,7 @@ import { ConfigProvider } from "antd";
 import AddProduct from "./pages/AddProducts";
 import QRCodePage from "./components/QrCodePage";
 import HomePage from "./pages/HomePage";
+import Products from "./components/store/Products";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/home" element={<HomePage />}></Route>
           <Route path="/add" element={<AddProduct/>}></Route>
           <Route path="/qrcode" element={<QRCodePage/>}></Route>
+          <Route path="/produtos" element={<Products/>}></Route>
         </Routes>
       </BrowserRouter>
     </ConfigProvider>
