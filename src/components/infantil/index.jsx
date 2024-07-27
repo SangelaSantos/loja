@@ -57,7 +57,7 @@ const InfantilList = () => {
   };
 
   return (
-    <div style={{ marginLeft: "140px"}}>
+    <div style={{ marginLeft: "170px"}}>
       <h3>Seção Infantil</h3>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       {products.length === 0 ? (

@@ -48,42 +48,43 @@ const Cart = () => {
   };
 
   return (
-    <div style={{ marginLeft: "140px" }}>
-      <h3>CARRINHO</h3>
-      {cart.length === 0 ? (
-        <p>Seu carrinho está vazio.</p>
-      ) : (
-        <div>
-          <ul style={{ display: 'flex', listStyleType: 'none', flexWrap: "wrap" }}>
-            {cart.map((product) => (
-              <li key={product.id} style={{ marginBottom: '1em', margin: "0 20px 20px 20px" }}>
-                <DivList>
-                  {product.imageUrl && (
-                    <img
-                      src={product.imageUrl}
-                      alt={product.name}
-                      style={{ width: '100px', height: '100px', objectFit: 'cover', marginRight: '1em' }}
-                    />
-                  )}
-                  <div>
-                    <div style={{display: "flex", marginTop: "10px"}}>
-                      <div style={{fontWeight: "bold"}}>{product.name}</div>
-                      <div style={{marginLeft: "10px", color: "red", fontWeight: "bold"}}>R$ {product.price}</div>
+    <div style={{ margin: "80px 50px 50px 170px", height: "500px", borderRadius: "15px", boxShadow: "5px 0 10px rgba(39, 39, 39, 0.5)" }}>
+      <div>
+        {cart.length === 0 ? (
+          <p style={{display: "flex", justifyContent: "center"}}>Seu carrinho está vazio.</p>
+        ) : (
+          <div>
+            <ul style={{ display: 'flex', listStyleType: 'none', flexWrap: "wrap", borderBottom: "1px dashed #272727" }}>
+              {cart.map((product) => (
+                <li key={product.id} style={{ marginBottom: '1em'}}>
+                  <DivList>
+                    {product.imageUrl && (
+                      <img
+                        src={product.imageUrl}
+                        alt={product.name}
+                        style={{ width: '100px', height: '100px', objectFit: 'cover', marginRight: '1em' }}
+                      />
+                    )}
+                    <div>
+                      <div style={{display: "flex"}}>
+                        <div style={{fontWeight: "bold"}}>{product.name}</div>
+                        <div style={{marginLeft: "10px", color: "red", fontWeight: "bold", right: 0}}>R$ {product.price}</div>
+                      </div>
+                      <ButtonQuantity onClick={() => diminuirQuantidade(product.id)}>-</ButtonQuantity>
+                      {product.quantity}
+                      <ButtonQuantity onClick={() => aumentarQuantidade(product.id)}>+</ButtonQuantity>
                     </div>
-                    <ButtonQuantity onClick={() => diminuirQuantidade(product.id)}>-</ButtonQuantity>
-                    {product.quantity}
-                    <ButtonQuantity onClick={() => aumentarQuantidade(product.id)}>+</ButtonQuantity>
-                  </div>
-                </DivList>
-              </li>
-            ))}
-          </ul>
-          <DivFooter>
-            <strong>TOTAL: </strong> R$ {calculateTotal()}<br />
-            <FooterButton onClick={metodoPagamento}>Pagar</FooterButton>
-          </DivFooter>
-        </div>
-      )}
+                  </DivList>
+                </li>
+              ))}
+            </ul>
+            <DivFooter>
+              <strong>TOTAL: </strong> R$ {calculateTotal()}<br />
+              <FooterButton onClick={metodoPagamento}>Pagar</FooterButton>
+            </DivFooter>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

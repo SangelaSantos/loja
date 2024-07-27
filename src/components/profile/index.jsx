@@ -9,7 +9,7 @@ const Navigate = () => {
   };
 
   return (
-    <div style={{ marginLeft: "140px" }}>
+    <div style={{ marginLeft: "170px" }}>
       <button onClick={voltarInicio}>SAIR</button>
     </div>
   );

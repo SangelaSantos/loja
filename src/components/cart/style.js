@@ -30,13 +30,10 @@ export const FooterButton = styled.button`
 }
 `;
 export const DivList = styled.div`
-    width: 200px;
-    height: 180px;
+    display: flex;
+    height: 100px;
     background-color: white; 
     padding: 10px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(39, 39, 39, 0.5), 0 -4px 8px rgba(39, 39, 39, 0.5), 4px 0 8px rgba(39, 39, 39, 0.5), -4px 0 8px rgba(39, 39, 39, 0.5);
-    border: 1px solid #272727;
 `;
 export const ButtonAdd = styled.button`
     padding: 5px 30px;
@@ -54,7 +51,7 @@ export const ButtonAdd = styled.button`
 export const ButtonQuantity = styled.button`
     padding: 5px 10px;
     margin-top: 8px;
-    margin-right: 5px;
+    right: 0;
     margin-left: 5px;
     border-radius: 5px;
     background-color: #FFFFFF;
