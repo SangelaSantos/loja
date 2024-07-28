@@ -14,6 +14,7 @@ function Login() {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
+
   const verificacaoLogin = (event) => {
     event.preventDefault();
     signInWithEmailAndPassword(auth, email, password)

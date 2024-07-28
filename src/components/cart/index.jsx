@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { database, ref, onValue, update } from '../../firebase';
+import { useNavigate } from 'react-router-dom';
 import {
   ProductsContainer,
   MainContent,
@@ -15,44 +16,63 @@ import {
   TotalContainer,
   ButtonPagamento,
 } from "./style";
+import { getAuth } from "firebase/auth";
 
 const Cart = () => {
   const [cart, setCart] = useState([]);
   const navigate = useNavigate();
+  const auth = getAuth();
+  const user = auth.currentUser;
 
   useEffect(() => {
-    const savedCart = JSON.parse(localStorage.getItem("cart")) || []; // Obtém o carrinho salvo no localStorage e o converte de JSON para um array
-    setCart(savedCart);
-  }, []); // O array vazio [] garante que o useEffect seja executado apenas uma vez, quando o componente for montado
+    if (!user) {
+      setCart([]);
+      return;
+    }
+
+    const fetchCart = () => {
+      const cartRef = ref(database, `cart/${user.uid}`);
+      onValue(cartRef, (snapshot) => {
+        const data = snapshot.val();
+        if (data) {
+          const cartList = Object.values(data);
+          setCart(cartList);
+        } else {
+          setCart([]);
+        }
+      });
+    };
+
+    fetchCart();
+  }, [user]);
 
   const aumentarQuantidade = (id) => {
-    const updatedCart = cart.map((product) => {
+    const updatedCart = cart.map(product => {
       if (product.id === id) {
-        return { ...product, quantity: product.quantity + 1 };
+        const newQuantity = product.quantity + 1;
+        update(ref(database, `cart/${user.uid}/${id}`), { ...product, quantity: newQuantity });
+        return { ...product, quantity: newQuantity };
       }
       return product;
     });
     setCart(updatedCart);
-    localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
 
   const diminuirQuantidade = (id) => {
-    const updatedCart = cart
-      .map((product) => {
-        if (product.id === id) {
-          const newQuantity = product.quantity - 1;
-          if (newQuantity > 0) {
-            return { ...product, quantity: newQuantity };
-          } else {
-            return null; // Marca o produto para remoção
-          }
+    const updatedCart = cart.map(product => {
+      if (product.id === id) {
+        const newQuantity = product.quantity - 1;
+        if (newQuantity > 0) {
+          update(ref(database, `cart/${user.uid}/${id}`), { ...product, quantity: newQuantity });
+          return { ...product, quantity: newQuantity };
+        } else {
+          return null; // Marca o produto para remoção
         }
-        return product;
-      })
-      .filter((product) => product !== null); // Remove produtos marcados
+      }
+      return product;
+    }).filter(product => product !== null); // Remove produtos marcados
 
     setCart(updatedCart);
-    localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
 
   const removerProduto = (id) => {
@@ -62,17 +82,11 @@ const Cart = () => {
   };
 
   const calculateTotal = () => {
-    return cart
-      .reduce(
-        (total, product) =>
-          total + parseFloat(product.price) * product.quantity,
-        0
-      )
-      .toFixed(2);
+    return cart.reduce((total, product) => total + (parseFloat(product.price) * product.quantity), 0).toFixed(2);
   };
 
   const metodoPagamento = () => {
-    navigate("/qrcode");
+    navigate('/qrcode');
   };
 
   return (
@@ -93,11 +107,11 @@ const Cart = () => {
           <div>
             <ProductsContainer>
               <Header>
-                <div>Imagem</div>
+                <div></div>
                 <div>Produto</div>
                 <div>Preço</div>
                 <div>Quantidade</div>
-                <div>Adicionar</div>
+                <div></div>
               </Header>
               <ul>
                 {cart.map((product) => (
