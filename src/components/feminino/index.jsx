@@ -57,7 +57,7 @@ const FemList = () => {
   };
 
   return (
-    <div style={{ marginLeft: "170px"}}>
+    <div style={{ marginLeft: "140px"}}>
       <h3>Seção Feminina</h3>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       {products.length === 0 ? (

@@ -50,8 +50,8 @@ const HomePage = () => {
             src={LogoTelaHome}
             alt="login"
             style={{
-              width: "100px",
-              height: "100px",
+              width: "110px",
+              height: "110px",
               marginLeft: "10px"
             }}
           />

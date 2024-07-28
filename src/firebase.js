@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { getDatabase, ref, push, onValue, remove } from "firebase/database";
+import { getDatabase, ref, push, onValue, remove, set, update } from "firebase/database";
 import { getStorage } from "firebase/storage";
 import { getFirestore } from 'firebase/firestore';
 
@@ -21,4 +21,4 @@ const database = getDatabase(app); // Inicializa o serviço de banco de dados em
 const storage = getStorage(app); // Inicializa o serviço de armazenamento do Firebase
 const db = getFirestore(app); // Inicializa o serviço de Firestore do Firebase (banco de dados NoSQL)
 
-export { app, auth, database, db, ref, push, storage, onValue, remove };
+export { app, auth, database, db, ref, push, storage, onValue, remove, set, update };

@@ -8,7 +8,6 @@ export const DivList = styled.div`
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(39, 39, 39, 0.5), 0 -4px 8px rgba(39, 39, 39, 0.5), 4px 0 8px rgba(39, 39, 39, 0.5), -4px 0 8px rgba(39, 39, 39, 0.5);
     border: 1px solid #272727;
-    background-color: #f4f4f4;
 `;
 export const ButtonAdd = styled.button`
     padding: 5px 30px;

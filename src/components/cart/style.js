@@ -46,12 +46,13 @@ export const ProductPrice = styled.div`
 
 export const ButtonAddToCart = styled.button`
   padding: 10px 20px;
-  background-color: #28a745;
+  background-color: #272727;
   border: none;
   color: #fff;
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
+  font-weight: bold;
 `;
 
 export const QuantityContainer = styled.div`

@@ -16,7 +16,7 @@ import {
   ButtonPagamento,
 } from "./style";
 
-const Products = () => {
+const Cart = () => {
   const [cart, setCart] = useState([]);
   const navigate = useNavigate();
 
@@ -142,4 +142,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default Cart;

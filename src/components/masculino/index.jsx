@@ -57,13 +57,13 @@ const MascList = () => {
   };
 
   return (
-    <div style={{ marginLeft: "170px"}}>
-      <h3>Seção Masculina</h3>
+    <div style={{ marginLeft: "140px"}}>
+      <h3>Seção Feminina</h3>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       {products.length === 0 ? (
         <p>Não há produtos masculinos disponíveis.</p>
       ) : (
-        <ul style={{display: "flex", flexWrap: "wrap",listStyleType: 'none'}}>
+        <ul style={{display: "flex", flexWrap: "wrap", listStyleType: 'none'}}>
           {products.map((product) => (
             <li key={product.id} style={{ marginBottom: '1em', margin: "0 20px 20px 20px" }}>
               <DivList>

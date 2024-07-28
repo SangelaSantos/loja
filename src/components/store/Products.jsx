@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ProductsContainer, SideBar, MainContent, Header, ProductImage, ProductItem, ProductName, ProductPrice, QuantityButton, QuantityContainer, QuantityDisplay, ButtonAddToCart, TotalContainer } from './Style';
-
 const Products = () => {
   const [cart, setCart] = useState([]);
   const navigate = useNavigate();
