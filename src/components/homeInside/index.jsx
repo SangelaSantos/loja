@@ -82,10 +82,9 @@ const HomeInside = () => {
 
   return (
     <div style={{ marginLeft: "170px" }}>
-      <h3>Seção Masculina</h3>
       {error && <p style={{ color: "red" }}>{error}</p>}
       {products.length === 0 ? (
-        <p>Não há produtos masculinos disponíveis.</p>
+        <p>Não há produtos disponíveis.</p>
       ) : (
         <ul
           style={{ display: "flex", flexWrap: "wrap", listStyleType: "none" }}
