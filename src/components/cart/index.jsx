@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { database, ref, onValue, update } from '../../firebase';
+import { database, ref, onValue, update, remove } from '../../firebase';
 import { useNavigate } from 'react-router-dom';
 import {
   ProductsContainer,
@@ -66,6 +66,7 @@ const Cart = () => {
           update(ref(database, `cart/${user.uid}/${id}`), { ...product, quantity: newQuantity });
           return { ...product, quantity: newQuantity };
         } else {
+          remove(ref(database, `cart/${user.uid}/${id}`)); // Remove o produto do banco de dados
           return null; // Marca o produto para remoção
         }
       }
@@ -76,9 +77,9 @@ const Cart = () => {
   };
 
   const removerProduto = (id) => {
+    remove(ref(database, `cart/${user.uid}/${id}`)); // Remove o produto do banco de dados
     const updatedCart = cart.filter((product) => product.id !== id);
     setCart(updatedCart);
-    localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
 
   const calculateTotal = () => {

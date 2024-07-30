@@ -87,7 +87,7 @@ const FemList = () => {
       <h3>Seção Feminina</h3>
       {error && <p style={{ color: "red" }}>{error}</p>}
       {products.length === 0 ? (
-        <p>Não há produtos feminino disponíveis.</p>
+        <p>Não há produtos femininos disponíveis.</p>
       ) : (
         <ul
           style={{ display: "flex", flexWrap: "wrap", listStyleType: "none" }}

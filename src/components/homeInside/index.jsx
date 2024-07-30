@@ -40,7 +40,7 @@ const HomeInside = () => {
     fetchProducts();
   }, []);
 
-  const handleAddToCart = (product) => {
+  const addCarrinho = (product) => {
     if (!user) {
       alert("Você precisa estar logado para adicionar itens ao carrinho.");
       return;
@@ -66,14 +66,14 @@ const HomeInside = () => {
     alert(`${quantity} ${product.name} foi adicionado ao carrinho!`);
   };
 
-  const handleIncreaseQuantity = (productId) => {
+  const aumentarQuantidade = (productId) => {
     setQuantities((prevQuantities) => ({
       ...prevQuantities,
       [productId]: (prevQuantities[productId] || 1) + 1,
     }));
   };
 
-  const handleDecreaseQuantity = (productId) => {
+  const diminuirQuantidade = (productId) => {
     setQuantities((prevQuantities) => ({
       ...prevQuantities,
       [productId]: Math.max((prevQuantities[productId] || 1) - 1, 1),
@@ -120,13 +120,13 @@ const HomeInside = () => {
                   {product.name}
                 <div style={{ display: "flex", justifyContent: "center", alignItems: "center", marginTop: "5px"}}>
                     <ButtonQuantity
-                      onClick={() => handleDecreaseQuantity(product.id)}
+                      onClick={() => diminuirQuantidade(product.id)}
                     >
                       -
                     </ButtonQuantity>
                     {quantities[product.id] || 1}
                     <ButtonQuantity
-                      onClick={() => handleIncreaseQuantity(product.id)}
+                      onClick={() => aumentarQuantidade(product.id)}
                     >
                       +
                     </ButtonQuantity>
@@ -141,7 +141,7 @@ const HomeInside = () => {
                       R$ {product.price}
                     </div>
                   </div>
-                  <ButtonAdd onClick={() => handleAddToCart(product)}>
+                  <ButtonAdd onClick={() => addCarrinho(product)}>
                     <MdAddShoppingCart style={{ fontSize: "20px" }} />
                   </ButtonAdd>
                 </div>
