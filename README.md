@@ -1,4 +1,4 @@
-Projeto de uma mini loja desenvolvido para um trabalho acadêmico
+#Projeto de uma mini loja desenvolvido para um trabalho acadêmico
 ![login](https://github.com/user-attachments/assets/75fd336f-7d45-4d73-887d-5672d84248d6)
 
 ![cadastro](https://github.com/user-attachments/assets/b1cbfc9c-bebc-48e0-a945-55bf594739f1)
