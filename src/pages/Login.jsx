@@ -71,7 +71,7 @@ function Login() {
                   }}
                 >
                   Você ainda não tem uma conta?{" "}
-                  <Link to={"/register"}>
+                  <Link to={"/register"} style={{textDecoration: "none"}}>
                     <strong style={{ color: "#000000" }}>Cadastre-se</strong>
                   </Link>
                 </p>

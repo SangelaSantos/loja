@@ -6,6 +6,7 @@ export const DivList = styled.div`
     background-color: #F4F4F4; 
     padding: 10px;
     border-radius: 10px;
+    cursor: "pointer";
     box-shadow: 0 4px 8px rgba(39, 39, 39, 0.3), 0 -4px 8px rgba(39, 39, 39, 0.3), 4px 0 8px rgba(39, 39, 39, 0.3), -4px 0 8px rgba(39, 39, 39, 0.3);
 `;
 export const ButtonAdd = styled.button`
@@ -17,6 +18,7 @@ export const ButtonAdd = styled.button`
     color: black;
     font-weight: bold;
     border: 1px solid #272727;
+    cursor: "pointer";
     &:hover{
         background-color: black;
         color: white;

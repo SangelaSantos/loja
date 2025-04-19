@@ -22,7 +22,7 @@ const HomeInside = () => {
             const productsList = [];
             for (let category in data) {
               for (let id in data[category]) {
-                  productsList.push({ id, ...data[category][id], category });               
+                productsList.push({ id, ...data[category][id], category });
               }
             }
             setProducts(productsList);
@@ -80,20 +80,19 @@ const HomeInside = () => {
     }));
   };
 
+  const limitarTexto = (texto, limite) => {
+    return texto.length > limite ? texto.slice(0, limite) + "..." : texto;
+  };
+
   return (
     <div style={{ marginLeft: "170px" }}>
       {error && <p style={{ color: "red" }}>{error}</p>}
       {products.length === 0 ? (
         <p>Não há produtos disponíveis.</p>
       ) : (
-        <ul
-          style={{ display: "flex", flexWrap: "wrap", listStyleType: "none" }}
-        >
+        <ul style={{ display: "flex", flexWrap: "wrap", listStyleType: "none" }}>
           {products.map((product) => (
-            <li
-              key={product.id}
-              style={{ marginBottom: "1em", margin: "0 20px 20px 20px" }}
-            >
+            <li key={product.id} style={{ marginBottom: "1em", margin: "0 20px 20px 20px" }}>
               <DivList>
                 <div
                   style={{
@@ -111,23 +110,26 @@ const HomeInside = () => {
                         height: "100px",
                         objectFit: "cover",
                         marginRight: "1em",
-                        marginBottom: "10px"
+                        marginBottom: "10px",
                       }}
                     />
                   )}
                 </div>
-                <div>
-                  {product.name}
-                <div style={{ display: "flex", justifyContent: "center", alignItems: "center", marginTop: "5px"}}>
-                    <ButtonQuantity
-                      onClick={() => diminuirQuantidade(product.id)}
-                    >
+                <div style={{ textAlign: "center", fontWeight: "bold" }}>
+                  {limitarTexto(product.name, 20)}
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      marginTop: "5px",
+                    }}
+                  >
+                    <ButtonQuantity onClick={() => diminuirQuantidade(product.id)}>
                       -
                     </ButtonQuantity>
                     {quantities[product.id] || 1}
-                    <ButtonQuantity
-                      onClick={() => aumentarQuantidade(product.id)}
-                    >
+                    <ButtonQuantity onClick={() => aumentarQuantidade(product.id)}>
                       +
                     </ButtonQuantity>
                     <div
@@ -135,7 +137,7 @@ const HomeInside = () => {
                         marginLeft: "5px",
                         color: "red",
                         fontWeight: "bold",
-                        fontSize: "22px"
+                        fontSize: "22px",
                       }}
                     >
                       R$ {product.price}

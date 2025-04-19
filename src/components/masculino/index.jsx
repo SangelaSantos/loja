@@ -82,6 +82,10 @@ const MascList = () => {
     }));
   };
 
+  const limitarTexto = (texto, limite) => {
+    return texto.length > limite ? texto.slice(0, limite) + "..." : texto;
+  };
+
   return (
     <div style={{ marginLeft: "170px" }}>
       <h3>Seção Masculina</h3>
@@ -108,7 +112,7 @@ const MascList = () => {
                   {product.imageUrl && (
                     <img
                       src={product.imageUrl}
-                      alt={product.name}
+                      alt={limitarTexto(product.name, 20)}
                       style={{
                         width: "100px",
                         height: "100px",

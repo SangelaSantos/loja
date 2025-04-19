@@ -13,7 +13,7 @@ import styled from "styled-components";
 import Cart from "../components/cart";
 import Profile from "../components/profile";
 import InfantilList from "../components/infantil";
-import LogoTelaHome from "../img/logo.png";
+import LogoTelaHome from "../img/logotipo.png";
 const SideBar = styled.div`
   position: fixed;
   top: 0;
